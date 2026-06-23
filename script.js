@@ -581,7 +581,7 @@ function renderTeacherMappingTable() {
                                 <select data-field="subject">
                                     <option value=""></option>
                                     ${subjectOptions.map(option => `
-                                        <option value="${escapeHtml(option)}"${option === subjectValue ? ' selected' : ''}>${escapeHtml(option)}</option>
+                                        <option value="${escapeHtml(option.code)}"${option.code === subjectValue ? ' selected' : ''}>${escapeHtml(option.code)} - ${escapeHtml(option.name)}</option>
                                     `).join('')}
                                 </select>
                             </td>
@@ -800,7 +800,8 @@ function renderSubjectsTable() {
                 <tbody>
                     ${rows.map((subject, i) => `
                         <tr data-index="${i}">
-                            <td>${escapeHtml(subject)}</td>
+                            <td>${escapeHtml(subject.code)}</td>
+                            <td>${escapeHtml(subject.name)}</td>
                             <td><button class="btn btn-danger btn-sm" onclick="deleteSubject(${i})"><i class="fas fa-trash"></i></button></td>
                         </tr>
                     `).join('')}
